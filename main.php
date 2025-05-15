@@ -4,16 +4,20 @@ require_once 'HashSet.php';
 
 $set = new HashSet();
 
-$set->add("apple");
-$set->add("banana");
+$set->set("apple");
+$set->set("banana");
+$set->set("orange");
+$set->set("pineapple");
+$set->set("blueberry");
+$set->set("watermelon");
 
-echo $set->contains("apple"); // true
+echo $set->has("apple"); // true
 echo "\n";
-echo $set->contains("cherry"); // false
+echo $set->has("cherry"); // false
 echo "\n";
 
 $set->remove("apple");
-echo $set->contains("apple"); // false
+echo $set->has("apple"); // false
 echo "\n";
 
-print_r($set->values()); // List of all keys in the set
+print_r($set->get()); // List of all keys in the set

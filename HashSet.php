@@ -20,7 +20,7 @@ class HashSet
         return $hash;
     }
 
-    public function add(string $key): void
+    public function set(string $key): void
     {
         $index = $this->hashCode($key);
 
@@ -33,15 +33,9 @@ class HashSet
         $this->table[$index][] = $key;
     }
 
-    public function contains(string $key): bool
+    public function get(): array
     {
-        $index = $this->hashCode($key);
-        foreach ($this->table[$index] as $existingKey) {
-            if ($existingKey === $key) {
-                return true;
-            }
-        }
-        return false;
+        return array_merge(...$this->table);
     }
 
     public function remove(string $key): void
@@ -55,8 +49,15 @@ class HashSet
         }
     }
 
-    public function values(): array
+    public function has(string $key): bool
     {
-        return array_merge(...$this->table);
+        $index = $this->hashCode($key);
+        foreach ($this->table[$index] as $existingKey) {
+            if ($existingKey === $key) {
+                return true;
+            }
+        }
+        return false;
     }
+
 }
