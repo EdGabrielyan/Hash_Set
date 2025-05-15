@@ -16,7 +16,8 @@ class HashSet
         $hash = 0;
         $prime = 31;
 
-        for ($i = 0; $i < strlen($key); $i++) {
+        for ($i = 0; $i < strlen($key); $i++)
+        {
             $hash = ($hash * $prime + ord($key[$i])) % $this->size;
         }
         return $hash;
@@ -26,8 +27,10 @@ class HashSet
     {
         $index = $this->hashCode($key);
 
-        foreach ($this->table[$index] as $existingKey) {
-            if ($existingKey === $key) {
+        foreach ($this->table[$index] as $existingKey)
+        {
+            if ($existingKey === $key)
+            {
                 return;
             }
         }
@@ -43,8 +46,10 @@ class HashSet
     public function remove(string $key): void
     {
         $index = $this->hashCode($key);
-        foreach ($this->table[$index] as $i => $existingKey) {
-            if ($existingKey === $key) {
+        foreach ($this->table[$index] as $i => $existingKey)
+        {
+            if ($existingKey === $key)
+            {
                 array_splice($this->table[$index], $i, 1);
                 return;
             }
@@ -54,8 +59,10 @@ class HashSet
     public function has(string $key): bool
     {
         $index = $this->hashCode($key);
-        foreach ($this->table[$index] as $existingKey) {
-            if ($existingKey === $key) {
+        foreach ($this->table[$index] as $existingKey)
+        {
+            if ($existingKey === $key)
+            {
                 return true;
             }
         }
