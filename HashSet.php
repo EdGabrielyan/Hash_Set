@@ -14,8 +14,10 @@ class HashSet
     private function hashCode(string $key): int
     {
         $hash = 0;
+        $prime = 31;
+
         for ($i = 0; $i < strlen($key); $i++) {
-            $hash = ($hash * 31 + ord($key[$i])) % $this->size;
+            $hash = ($hash * $prime + ord($key[$i])) % $this->size;
         }
         return $hash;
     }
@@ -26,7 +28,7 @@ class HashSet
 
         foreach ($this->table[$index] as $existingKey) {
             if ($existingKey === $key) {
-                return; // Already exists
+                return;
             }
         }
 
